@@ -53,16 +53,4 @@ describe('ProductList', () => {
     expect(listener).toHaveBeenCalledTimes(1)
     window.removeEventListener(CART_ITEM_ADDED, listener)
   })
-
-  it('writes the cart to localStorage when Add to Cart is clicked', async () => {
-    renderWithStore()
-    const user = userEvent.setup()
-
-    const [firstButton] = screen.getAllByRole('button', { name: 'Add to Cart' })
-    await user.click(firstButton)
-
-    const stored = JSON.parse(localStorage.getItem('cart') ?? '{"items":[]}')
-    expect(stored.items).toHaveLength(1)
-    expect(stored.items[0].id).toBe(products[0].id)
-  })
 })

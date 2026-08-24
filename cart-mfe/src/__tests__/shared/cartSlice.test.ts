@@ -5,6 +5,7 @@ import cartReducer, {
   incrementQty,
   decrementQty,
   clearCart,
+  setCartState,
   selectCartItems,
   selectTotalItems,
   selectTotalPrice,
@@ -66,5 +67,20 @@ describe('cartSlice', () => {
     expect(selectCartItems(rootState)).toBe(cart.items)
     expect(selectTotalItems(rootState)).toBe(5)
     expect(selectTotalPrice(rootState)).toBe(35)
+  })
+
+  it('replaces entire cart state (cross-tab sync)', () => {
+    let state = cartReducer(undefined, addToCart(product))
+    expect(state.items).toHaveLength(1)
+
+    const newCart: CartState = {
+      items: [
+        { id: 2, name: 'Different', price: 20, quantity: 3 },
+        { id: 3, name: 'Another', price: 15, quantity: 1 },
+      ],
+    }
+    state = cartReducer(state, setCartState(newCart))
+    expect(state.items).toHaveLength(2)
+    expect(state.items[0].id).toBe(2)
   })
 })

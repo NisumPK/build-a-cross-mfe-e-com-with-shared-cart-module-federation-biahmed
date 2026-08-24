@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToCart } from '@shared/cartSlice'
 import { dispatchCartItemAdded } from '@shared/events'
-import { saveCartToStorage, loadCartFromStorage } from '@shared/storage'
 import type { Product } from '@shared/types'
 import products from '../data/products.json'
 
@@ -30,21 +29,6 @@ export default function ProductDetails({ id }: Props) {
   const handleAddToCart = () => {
     dispatch(addToCart(product))
     dispatchCartItemAdded(product)
-
-    const current = loadCartFromStorage() ?? { items: [] }
-    const existing = current.items.find((item) => item.id === product.id)
-    if (existing) {
-      existing.quantity += 1
-    } else {
-      current.items.push({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1,
-      })
-    }
-    saveCartToStorage(current)
   }
 
   return (
