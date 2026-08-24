@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "price": 99,
+    "image": "https://placehold.co/200x200?text=Headphones",
+    "description": "Over-ear wireless headphones with active noise cancellation and 30-hour battery life."
+  },
+  {
+    "id": 2,
+    "name": "Laptop Stand",
+    "price": 49,
+    "image": "https://placehold.co/200x200?text=Laptop+Stand",
+    "description": "Adjustable aluminum laptop stand for improved posture and airflow."
+  },
+  {
+    "id": 3,
+    "name": "Mechanical Keyboard",
+    "price": 129,
+    "image": "https://placehold.co/200x200?text=Keyboard",
+    "description": "Tactile mechanical keyboard with hot-swappable switches and RGB backlighting."
+  },
+  {
+    "id": 4,
+    "name": "Wireless Mouse",
+    "price": 39,
+    "image": "https://placehold.co/200x200?text=Mouse",
+    "description": "Ergonomic wireless mouse with adjustable DPI and silent clicks."
+  },
+  {
+    "id": 5,
+    "name": "USB-C Hub",
+    "price": 59,
+    "image": "https://placehold.co/200x200?text=USB-C+Hub",
+    "description": "7-in-1 USB-C hub with HDMI, SD card reader, and 100W passthrough charging."
+  },
+  {
+    "id": 6,
+    "name": "Portable SSD 1TB",
+    "price": 119,
+    "image": "https://placehold.co/200x200?text=SSD",
+    "description": "Compact 1TB portable SSD with up to 1050MB/s read speeds."
+  },
+  {
+    "id": 7,
+    "name": "4K Webcam",
+    "price": 89,
+    "image": "https://placehold.co/200x200?text=Webcam",
+    "description": "4K webcam with auto-focus and built-in noise-cancelling microphone."
+  },
+  {
+    "id": 8,
+    "name": "Desk Lamp",
+    "price": 34,
+    "image": "https://placehold.co/200x200?text=Desk+Lamp",
+    "description": "LED desk lamp with adjustable brightness and color temperature."
+  },
+  {
+    "id": 9,
+    "name": "Standing Desk Converter",
+    "price": 179,
+    "image": "https://placehold.co/200x200?text=Standing+Desk",
+    "description": "Sit-to-stand desk converter with a spacious dual-tier work surface."
+  },
+  {
+    "id": 10,
+    "name": "Bluetooth Speaker",
+    "price": 69,
+    "image": "https://placehold.co/200x200?text=Speaker",
+    "description": "Portable waterproof Bluetooth speaker with 12-hour battery life."
+  }
+]
