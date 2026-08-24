@@ -1,0 +1,17 @@
+{
+  "name": "mfe-ecommerce-shared-cart",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Dev convenience launcher only — each app (host/catalog-mfe/cart-mfe/wishlist-mfe/auth-mfe) remains independent with its own package.json and can be run/deployed on its own.",
+  "scripts": {
+    "dev": "concurrently -k -n catalog,cart,wishlist,auth,host -c blue,magenta,cyan,green,yellow \"npm --prefix catalog-mfe run dev\" \"npm --prefix cart-mfe run dev\" \"npm --prefix wishlist-mfe run dev\" \"npm --prefix auth-mfe run dev\" \"npm --prefix host run dev\"",
+    "build:all": "npm --prefix catalog-mfe run build && npm --prefix cart-mfe run build && npm --prefix wishlist-mfe run build && npm --prefix auth-mfe run build && npm --prefix host run build",
+    "deploy:simulate": "concurrently -k -n catalog,cart,wishlist,auth,host -c blue,magenta,cyan,green,yellow \"npx serve catalog-mfe/dist -p 5001 --no-clipboard\" \"npx serve cart-mfe/dist -p 5002 --no-clipboard\" \"npx serve wishlist-mfe/dist -p 5003 --no-clipboard\" \"npx serve auth-mfe/dist -p 5004 --no-clipboard\" \"npx serve host/dist -p 5000 --no-clipboard\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.7"
+  }
+}
