@@ -402,7 +402,6 @@ Before submitting, verified:
 - ✅ Architecture decisions are justified (8 questions answered)
 - ✅ Screenshots/demo are included (5 screenshots in `screenshots/`)
 - ✅ Repository runs using documented commands (`npm run dev`)
-- ✅ **BONUS: Cross-Tab Sync** — changes in one browser tab automatically sync to other tabs via storage event listener
 
 ## Conclusion
 
