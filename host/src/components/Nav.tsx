@@ -1,37 +1,31 @@
-import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { selectTotalItems } from '@shared/cartSlice'
-import type { Product } from '@shared/types'
+import { selectWishlistCount } from '@shared/wishlistSlice'
+import { selectUser } from '@shared/authSlice'
 import type { RootState } from '../store'
 
 export default function Nav() {
   const totalItems = useSelector((state: RootState) => selectTotalItems(state))
-  const [recentProduct, setRecentProduct] = useState<Product | null>(null)
-
-  useEffect(() => {
-    const raw = sessionStorage.getItem('recentProduct')
-    if (raw) {
-      try {
-        setRecentProduct(JSON.parse(raw))
-      } catch {
-        // ignore malformed value
-      }
-    }
-  }, [])
+  const wishlistCount = useSelector((state: RootState) => selectWishlistCount(state))
+  const user = useSelector((state: RootState) => selectUser(state))
 
   return (
     <header>
       <h2>MFE E-Commerce</h2>
       <nav>
         <Link to="/">Catalog</Link> |{' '}
-        <Link to="/cart">Cart ({totalItems})</Link>
+        <Link to="/wishlist">❤️ Wishlist ({wishlistCount})</Link> |{' '}
+        <Link to="/cart">Cart ({totalItems})</Link> |{' '}
+        {user ? (
+          <>
+            <span style={{ marginRight: '0.5rem' }}>Welcome, {user.name}</span>
+            <Link to="/login">Logout</Link>
+          </>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </nav>
-      {recentProduct && (
-        <p style={{ fontSize: '0.85em', color: '#555' }}>
-          Recently viewed (sessionStorage): {recentProduct.name}
-        </p>
-      )}
     </header>
   )
 }

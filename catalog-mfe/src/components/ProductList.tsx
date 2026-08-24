@@ -1,5 +1,6 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '@shared/cartSlice'
+import { addToWishlist, removeFromWishlist } from '@shared/wishlistSlice'
 import { dispatchCartItemAdded } from '@shared/events'
 import type { Product } from '@shared/types'
 import products from '../data/products.json'
@@ -11,8 +12,13 @@ interface Props {
   onSelectProduct?: (id: number) => void
 }
 
+interface RootState {
+  wishlist?: { items: Product[] }
+}
+
 export default function ProductList({ onSelectProduct }: Props) {
   const dispatch = useDispatch()
+  const wishlistItems = useSelector((state: RootState) => state.wishlist?.items ?? [])
 
   const handleAddToCart = (product: Product) => {
     // Redux update (goes to Cart MFE via shared store, persisted by host's store.subscribe)
@@ -27,6 +33,15 @@ export default function ProductList({ onSelectProduct }: Props) {
       onSelectProduct(id)
     } else {
       window.location.href = `/product/${id}?ref=list`
+    }
+  }
+
+  const handleToggleWishlist = (product: Product) => {
+    const isInWishlist = wishlistItems.some((item) => item.id === product.id)
+    if (isInWishlist) {
+      dispatch(removeFromWishlist(product.id))
+    } else {
+      dispatch(addToWishlist(product))
     }
   }
 
@@ -46,6 +61,8 @@ export default function ProductList({ onSelectProduct }: Props) {
             product={product}
             onAddToCart={handleAddToCart}
             onSelectProduct={handleSelectProduct}
+            isInWishlist={wishlistItems.some((item) => item.id === product.id)}
+            onToggleWishlist={handleToggleWishlist}
           />
         ))}
       </div>

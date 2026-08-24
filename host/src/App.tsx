@@ -5,6 +5,8 @@ import Nav from './components/Nav'
 import CatalogPage from './pages/CatalogPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import CartRoutePage from './pages/CartRoutePage'
+import WishlistRoutePage from './pages/WishlistRoutePage'
+import LoginRoutePage from './pages/LoginRoutePage'
 
 function RemotePage({ children }: { children: React.ReactNode }) {
   const { pathname } = useLocation()
@@ -31,10 +33,26 @@ export default function App() {
             }
           />
           <Route
+            path="/login"
+            element={
+              <RemotePage>
+                <LoginRoutePage />
+              </RemotePage>
+            }
+          />
+          <Route
             path="/product/:id"
             element={
               <RemotePage>
                 <ProductDetailPage />
+              </RemotePage>
+            }
+          />
+          <Route
+            path="/wishlist"
+            element={
+              <RemotePage>
+                <WishlistRoutePage />
               </RemotePage>
             }
           />

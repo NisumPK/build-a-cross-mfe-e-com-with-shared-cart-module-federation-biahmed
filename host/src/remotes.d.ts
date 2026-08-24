@@ -15,3 +15,15 @@ declare module 'cart_mfe/CartPage' {
   const CartPage: FC<{ coupon?: string | null }>
   export default CartPage
 }
+
+declare module 'wishlist_mfe/WishlistPage' {
+  import type { FC } from 'react'
+  const WishlistPage: FC
+  export default WishlistPage
+}
+
+declare module 'auth_mfe/LoginPage' {
+  import type { FC } from 'react'
+  const LoginPage: FC
+  export default LoginPage
+}
