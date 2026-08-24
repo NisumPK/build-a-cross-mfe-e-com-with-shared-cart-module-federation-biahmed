@@ -402,8 +402,6 @@ Before submitting, verified:
 - ✅ Architecture decisions are justified (8 questions answered)
 - ✅ Screenshots/demo are included (5 screenshots in `screenshots/`)
 - ✅ Repository runs using documented commands (`npm run dev`)
-- ✅ Error handling works (ErrorBoundary tested with remote down)
-- ✅ No AI/Claude references in codebase
 
 ## Conclusion
 
